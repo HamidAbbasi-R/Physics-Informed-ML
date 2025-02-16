@@ -29,27 +29,7 @@ The goal of this project is to:
 - **Visualization**: Includes phase space trajectories and time series plots to compare TBNN predictions with true solutions.
 - **Efficient Training**: Uses caching and session state to avoid redundant computations during training and evaluation.
 
----
-
-## Installation
-
-### Prerequisites
-
-To run this app, you need the following Python libraries installed:
-
-- `streamlit`
-- `numpy`
-- `scipy`
-- `torch`
-- `plotly`
-
-You can install these dependencies using `pip`:
-
-```bash
-pip install streamlit numpy scipy torch plotly
-```
-
-### Running the App
+## Running the App
 
 You can try the app simply by clicking here. 
 
