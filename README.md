@@ -104,16 +104,3 @@ streamlit run Van_der_Pol_TBNN.py
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
-
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgments
-
-- Inspired by physics-informed machine learning techniques for solving differential equations.
-- Built using [Streamlit](https://streamlit.io/) for interactive visualization and [PyTorch](https://pytorch.org/) for neural network implementation.
