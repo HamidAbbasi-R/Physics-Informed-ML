@@ -75,7 +75,7 @@ num_epochs = st.sidebar.slider("Number of training epochs", 500, 5000, 500, step
 train_button = st.sidebar.button("Train TBNN")
 
 st.sidebar.header("Test Parameters for Evaluation")
-mu_0 = st.sidebar.slider("Van der Pol oscillator parameter, $\\mu$", 0.1, 5.0, 1.0, step=0.1)
+mu_0 = st.sidebar.slider("Van der Pol oscillator parameter, $\\mu$", 0.5, 1.5, 1.0, step=0.1)
 x0 = st.sidebar.slider("Initial condition x0", -2.0, 2.0, -1.0, step=0.1)
 y0 = st.sidebar.slider("Initial condition y0", -2.0, 2.0, -1.5, step=0.1)
 
@@ -96,7 +96,7 @@ def generate_training_data(t_end, N_time_steps, num_samples):
     # Generate random initial conditions
     np.random.seed(42)
     initial_conditions = np.random.uniform(-2, 2, size=(num_samples, 2))
-    mu = np.random.uniform(0.1, 5, size=(num_samples, 1))
+    mu = np.random.uniform(0.5, 1.5, size=(num_samples, 1))
 
     # Solve the ODE for each initial condition
     inputs = []
