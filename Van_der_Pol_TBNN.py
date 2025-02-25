@@ -7,6 +7,7 @@ import streamlit as st
 import torch
 import torch.nn as nn
 import torch.optim as optim
+st.set_page_config(layout="wide")
 
 # Title and description
 st.title("Van der Pol Oscillator with Physics-Informed Tensor Basis Neural Network (TBNN)")
