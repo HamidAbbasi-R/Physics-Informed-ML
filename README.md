@@ -83,12 +83,6 @@ streamlit run Van_der_Pol_TBNN.py
 
 ### Phase Space Trajectory
 ![Phase Space Plot](imgs/trajectory.png)
-
-### Mean Squared Error
-![MSE](imgs/MSE.png)
-
-
-
 ---
 
 ## Notes
