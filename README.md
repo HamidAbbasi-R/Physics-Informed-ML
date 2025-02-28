@@ -1,6 +1,8 @@
 # Van der Pol Oscillator with Physics-Informed Tensor Basis Neural Network (TBNN)
  
-You can try this app on stramlit servers by clicking [here](https://hamidabbasi-r-physics-informed-ml-van-der-pol-tbnn-b1t6a1.streamlit.app/).
+You can try this app on stramlit by clicking on the link below:
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hamidabbasi-r-physics-informed-ml-van-der-pol-tbnn-b1t6a1.streamlit.app/)
 
 This repository contains a Streamlit-based interactive dashboard that demonstrates how to train and evaluate a **Tensor Basis Neural Network (TBNN)** to learn the dynamics of the **Van der Pol oscillator**. The TBNN is trained using both data-driven loss (mean squared error) and physics-informed loss (residuals of the governing equations). After training, the model predicts trajectories for new initial conditions and compares them with true solutions.
 

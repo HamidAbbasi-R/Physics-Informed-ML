@@ -7,7 +7,19 @@ import streamlit as st
 import torch
 import torch.nn as nn
 import torch.optim as optim
-st.set_page_config(layout="wide")
+from matplotlib import cm
+
+# generate colors
+def get_colors(N):
+    colors = cm.winter(np.linspace(0, 1, N))  # Generate colors for each hidden state
+    # make each color transparent
+    colors_alpha = colors.copy()
+    for i in range(N): colors_alpha[i][3] = 0.5
+    # convert to rgba strings
+    colors = [f'rgba{tuple(color)}' for color in colors]
+    colors_alpha = [f'rgba{tuple(color)}' for color in colors_alpha]
+    return colors, colors_alpha
+
 
 # Title and description
 st.title("Van der Pol Oscillator with Physics-Informed Tensor Basis Neural Network (TBNN)")
@@ -279,12 +291,50 @@ if st.session_state.model_trained:
 
     # Plot results
     fig = make_subplots(rows=2, cols=1, shared_xaxes=True)
-    fig.add_trace(go.Scatter(x=t_eval, y=true_solutions[:, 0], mode='lines', name="True Solution"), row=1, col=1)
-    fig.add_trace(go.Scatter(x=t_eval, y=test_pred_x, mode='lines', name="TBNN Prediction"), row=1, col=1)
+    fig.add_trace(go.Scatter(
+        x=t_eval, 
+        y=true_solutions[:, 0], 
+        mode='lines', 
+        name="True Solution",
+        line=dict(color='rgb(159, 37, 37)', width=2, dash='dash')
+    ), row=1, col=1)
+    fig.add_trace(go.Scatter(
+        x=t_eval, 
+        y=test_pred_x, 
+        mode='lines', 
+        name="TBNN Prediction",
+        line=dict(color='rgb(250, 60, 60)', width=2)
+    ), row=1, col=1)
+    fig.add_trace(go.Bar(
+        x=t_eval, 
+        y=true_solutions[:, 0] - test_pred_x, 
+        name="Error x", 
+        # bar color
+        marker=dict(color='rgba(255, 0, 0, 0.5)')
+    ), row=1, col=1)
     fig.update_layout(yaxis_title="x(t)", xaxis1=dict(showticklabels=False, showgrid=False))
 
-    fig.add_trace(go.Scatter(x=t_eval, y=true_solutions[:, 1], mode='lines', name="True Solution"), row=2, col=1)
-    fig.add_trace(go.Scatter(x=t_eval, y=test_pred_y, mode='lines', name="TBNN Prediction"), row=2, col=1)
+    fig.add_trace(go.Scatter(
+        x=t_eval, 
+        y=true_solutions[:, 1], 
+        mode='lines', 
+        name="True Solution",
+        line=dict(color='rgb(39, 39, 161)', width=2, dash='dash')
+    ), row=2, col=1)
+    fig.add_trace(go.Scatter(
+        x=t_eval, 
+        y=test_pred_y, 
+        mode='lines', 
+        name="TBNN Prediction",
+        line=dict(color='rgb(62, 62, 255)', width=2)
+    ), row=2, col=1)
+    fig.add_trace(go.Bar(
+        x=t_eval, 
+        y=true_solutions[:, 1] - test_pred_y, 
+        name="Error y",
+        # bar color
+        marker=dict(color='rgba(0, 0, 255, 0.5)')
+    ), row=2, col=1)
     fig.update_layout(xaxis2_title="Time t", yaxis2_title="y(t)")
     st.plotly_chart(fig)
 
